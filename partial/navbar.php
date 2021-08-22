@@ -1,3 +1,11 @@
+<?php
+  require_once('inc/database.php');
+  $users = selectAllUser();
+  session_start();
+  foreach($users as $user):
+    if($user['userName'] == $_SESSION['name']):
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-dark position-sticky sticky-top">
   <a class="navbar-brand" href="#">
     <img src="assets/images/182-1827833_news-logo-png-logo-news-clipart.png" alt="Logo" style="width:50px;">
@@ -24,10 +32,16 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      <?php if($user['role'] == "Admin"): ?>
       <a class="nav-link text-light" href="?page=admin">+Add News</a>
       <a href="?page=user"><i class="btn btn-secondary w-100 fa fa-user" style="height: 30px; width: 70px;display: flex; text-align: center; align-items: center; justify-content: center; border-radius: 5px; text-decoration: none;">Users</i></a>
-      <a href="process/login.php"><i class="fa fa-sign-out btn-danger" style="height: 30px; width: 70px;display: flex; text-align: center; align-items: center; justify-content: center; border-radius: 5px; text-decoration: none; ">Logout</i></a>
+      <?php endif; ?>
+      <a href="https://localhost/PHP_Project"><i class="fa fa-sign-out btn-danger" style="height: 30px; width: 70px;display: flex; text-align: center; align-items: center; justify-content: center; border-radius: 5px; text-decoration: none; ">Logout</i></a>
     </form>
   </div>
 </nav>
 
+<?php
+  endif;
+  endforeach;
+?>

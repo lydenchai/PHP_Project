@@ -1,11 +1,12 @@
-
 <?php
     include_once('inc/database.php');
+    // session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $newsData = searchPost($_POST);
     }else{
         $newsData = selectAllNews();
     }
+
 ?>
 <div style="background:#cdd4cf">
     <br>
@@ -46,7 +47,7 @@
         </div>   
         <div style="width:30%; height: auto; margin-top: -10px;">
             <form action="" method="post" class="form-inline my-2 my-lg-0">
-                <input name="key" class="form-control bg-dark mr-sm-2 text-white" type="search" placeholder="Search Here..." aria-label="Search" style="width:79.5%; margin: 10px; margin-left: -2px">
+                <input name="search" class="form-control bg-dark mr-sm-2 text-white" type="search" placeholder="Search Here..." aria-label="Search" style="width:79.5%; margin: 10px; margin-left: -2px">
                 <button class="btn btn-success my-2 my-sm-0 " type="submit">Search</button>
             </form>
             <img src="assets/images/khmer.gif" alt="" style="width: 100%;">
@@ -84,10 +85,12 @@
                 $description = readMore($data['description'], 20000);
         ?>
         <div class="card-body">
+            <?php if($_SESSION['name'] == "Lyden"): ?>
             <div class="action d-flex justify-content-end">
                 <a href="process/edit_news_html.php?id=<?= $data['postID']?>" class="btn btn-primary btn-sm mr-2"><i class="fa fa-pencil"></i></a>
                 <a href="process/delete.php?id=<?= $data['postID']?>" class="btn btn-danger btn-sm mr-2"><i class="fa fa-trash"></i></a>
             </div>
+            <?php endif; ?>
             <div class="d-flex">
                 <div class="card-image mr-3"  style="width: 450px; height: auto; box-sizing: border-box;">
                     <img class="img-fluid" style="width: 100%; height: 300px;"src="uploadImg/<?= $data['image']?>" alt="Error Img">

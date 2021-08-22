@@ -11,17 +11,22 @@
         body{
             background-size: cover;
             background-position: center;
-            background-image: url(../assets/images/background_form.jpg);
+            background-image: url(assets/images/background_form.jpg);
         }
     </style>
 </head>
 <body>
+    <br>
+    <br>
+    <br>
     <div  style="width: 100%; height: 100vh; ">
         <div class="p-4 ">
             <?php 
-                require_once("../inc/database.php");
+                require_once("inc/database.php");
                 $message = "";
                 if ($_SERVER["REQUEST_METHOD"]=="POST"){
+                    session_start();
+                    $_SESSION['name'] = $_POST['username'];
                     $isLogin = login($_POST);
                     if($isLogin){
                         header("Location: http://localhost/PHP_Project/index.php?page=home");
@@ -30,9 +35,6 @@
                     }
                 }
             ?>
-            <div class="d-flex p-2" style="margin-top: 3%;margin-left:28.5%">
-                <a href="http://localhost/PHP_Project/index.php" class="btn btn-danger"><i class="fa fa-arrow-circle-left" style="font-size:20px">Back</i></a>
-            </div>
             <form action="#" method="post" class="rounded-lg col-lg-5 col-md-4 m-auto p-3 bg-none  border border-dark" >
                 <div class="text-center">
                     <h3>Admin Login</h3>
@@ -57,7 +59,7 @@
                         <p>OR</p>
                     </div>
                     <div class="col-5">
-                        <a href="register.php"><button type="button" class="btn btn-warning w-100"><i class="fa fa-user" aria-hidden="true"></i> Register </button></a>
+                        <a href="http://localhost/PHP_Project/process/register.php"><button type="button" class="btn btn-warning w-100"><i class="fa fa-user" aria-hidden="true"></i> Register </button></a>
                     </div>
                 </div>
             </form>

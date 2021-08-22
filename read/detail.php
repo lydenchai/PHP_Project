@@ -19,7 +19,7 @@
 <body>
     <div >
         <div class="d-flex p-2" style="margin-top: 3%;margin-left:8%;">
-            <a href="http://localhost/PHP_Project/index.php" class="btn btn-danger"><i class="fa fa-arrow-circle-left" style="font-size:20px">Back</i></a>
+            <a href="http://localhost/PHP_Project/index.php?page=home" class="btn btn-danger"><i class="fa fa-arrow-circle-left" style="font-size:20px">Back</i></a>
         </div>
         <div class="card" style="margin:15px; width: 83.5%; margin-left: 8.5%; border: 1px solid #8adecd; ">
             <?php
@@ -34,7 +34,7 @@
                         <img class="img-fluid" style="width: 100%; height: 300px;"src="../uploadImg/<?= $data['image']?>" alt="">
                     </div>
                     <div class="info" style="height:auto; width: 100%; box-sizing: border-box;">
-                        <h1 class="display-4"><?= $data['title']?></h1>
+                        <h2><?= $data['title']?></h2>
                         <strong><?= $data['date']?></strong> 
                         <p style="box-sizing: content-box;"> <?= $data['description']?></p>
                     </div>

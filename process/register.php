@@ -16,11 +16,16 @@
     </style>
 </head>
 <body>
+    <br>
+    <br>
+    <br>
     <div  style="width: 100%; height: 100vh;">
     <?php
         include_once('../inc/database.php');
         $message = "";
         if($_SERVER['REQUEST_METHOD'] == "POST") {
+            session_start();
+            $_SESSION['name'] = $_POST['username'];
             $isCreat = addUser($_POST);
             if($isCreat) {
                 header("location: http://localhost/PHP_Project/index.php?page=home");
@@ -30,9 +35,6 @@
         }
     ?>
         <div class="p-4 ">
-            <div class="d-flex p-2" style="margin-top: 3%;margin-left:28.5%">
-                <a href="http://localhost/PHP_Project/index.php" class="btn btn-danger"><i class="fa fa-arrow-circle-left" style="font-size:20px">Back</i></a>
-            </div>
             <form action="#" method="post" class="rounded-lg col-lg-5 col-md-4 m-auto bg-none border border-dark p-3" enctype="multipart/form-data">
                 <div class="text-center">
                     <h3>Register For Login</h3>
@@ -71,7 +73,7 @@
                         <p>OR</p>
                     </div>
                     <div class="col-5">
-                        <a href="login.php"><button type="button" class="btn btn-warning w-100"> Login </button></a>
+                        <a href="http://localhost/PHP_Project/"><button type="button" class="btn btn-warning w-100"> Login </button></a>
                     </div>
                 </div>
             </form>

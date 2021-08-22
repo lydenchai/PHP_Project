@@ -15,7 +15,7 @@
         $tmp_name = $_FILES['image']['tmp_name'];
         $dir_fold = "../uploadImg/";
         move_uploaded_file($tmp_name, $dir_fold.$img_Name);
-        return database()->query("INSERT INTO post (title, description, image, categoryID) VALUES ('$title','$description', '$img_Name','$categoryID')");
+        return database()->query("INSERT INTO post (title, description, image, userID, categoryID) VALUES ('$title','$description', '$img_Name', 1, '$categoryID')");
     }
 
     // Create User
@@ -68,13 +68,13 @@
 
     // Search
     function searchPost($title){
-        $title = $title['key'];
+        $title = $title['search'];
         return database()->query("SELECT * FROM post INNER JOIN category ON post.categoryID = category.categoryID AND post.title LIKE '%$title%'");
     }
 
     // Select News
     function selectAllNews() {
-        return database()->query("SELECT * FROM post GROUP BY title DESC");
+        return database()->query("SELECT * FROM post INNER JOIN user USING(userID) ORDER BY title DESC");
     }
 
     function selectOneNews($id) {

@@ -9,7 +9,7 @@
 <body>
     <div style="width: 100%; height: auto; background: #fff">
         <div class="d-flex p-2" style="margin-left:19.5%">
-            <a href="http://localhost/PHP_Project/index.php" class="btn btn-danger"><i class="fa fa-arrow-circle-left" style="font-size:20px">Back</i></a>
+            <a href="http://localhost/PHP_Project/index.php?page=home" class="btn btn-danger"><i class="fa fa-arrow-circle-left" style="font-size:20px">Back</i></a>
         </div>
         <div class="container p-4" style="width: 60%;margin-left: 20%; height:auto; border: 1px solid cygen;background: #daede2">
             <form action="http://localhost/PHP_Project/process/create_news_model.php" method="post" style="width:90%; margin-left: 6%;" enctype="multipart/form-data">

@@ -4,7 +4,7 @@
         $isUpdate = updateNews($_POST);
         print_r($_POST);
         if ($isUpdate){
-            header("Location: http://localhost/PHP_Project/index.php");
+            header("Location: http://localhost/PHP_Project/index.php?page=home");
         }
     }
 ?>

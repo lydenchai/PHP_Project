@@ -1,8 +1,10 @@
 <?php 
-    include_once('partial/navbar.php');
+    
     include_once('partial/header.php');
     if (isset($_GET['page'])){
+        include_once('partial/navbar.php');
         if ($_GET['page'] == "home"){
+            
             include_once('pages/home.php');
         }elseif($_GET['page'] == "entertainment"){
             include_once('pages/entertainment.php');
@@ -19,8 +21,9 @@
         }else{
             include_once('pages/404.php');
         }
-    }else {
-        include_once('pages/home.php');
+    }else{
+        include_once('process/login.php');
+        die();
     }
 
     include_once('partial/footer.php');
